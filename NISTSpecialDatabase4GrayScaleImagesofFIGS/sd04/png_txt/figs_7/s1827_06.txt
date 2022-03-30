@@ -1,0 +1,3 @@
+Gender: M
+Class: L
+History: s1827_06.pct L b0726.pct

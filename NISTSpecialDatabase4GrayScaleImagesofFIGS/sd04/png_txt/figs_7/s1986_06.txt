@@ -1,0 +1,3 @@
+Gender: M
+Class: L
+History: s1986_06.pct L b1916.pct

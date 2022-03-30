@@ -1,0 +1,3 @@
+Gender: M
+Class: R
+History: s1940_03.pct R b1923.pct

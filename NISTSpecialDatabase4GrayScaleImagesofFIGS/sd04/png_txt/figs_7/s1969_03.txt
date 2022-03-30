@@ -1,0 +1,3 @@
+Gender: M
+Class: R
+History: s1969_03.pct RT b2383.pct

@@ -1,0 +1,3 @@
+Gender: F
+Class: A
+History: f1979_03.pct A a1853.pct

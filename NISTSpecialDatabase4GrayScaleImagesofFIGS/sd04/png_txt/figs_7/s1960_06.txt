@@ -1,0 +1,3 @@
+Gender: M
+Class: A
+History: s1960_06.pct AT b1666.pct

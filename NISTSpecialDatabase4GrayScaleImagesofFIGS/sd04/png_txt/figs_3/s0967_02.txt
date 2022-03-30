@@ -1,0 +1,3 @@
+Gender: M
+Class: T
+History: s0967_02.pct T b2642.pct

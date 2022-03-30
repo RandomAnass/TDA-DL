@@ -1,0 +1,3 @@
+Gender: F
+Class: T
+History: f0694_09.pct T a1959.pct

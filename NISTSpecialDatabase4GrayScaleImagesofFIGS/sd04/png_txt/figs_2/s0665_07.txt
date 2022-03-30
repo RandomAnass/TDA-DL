@@ -1,0 +1,3 @@
+Gender: M
+Class: W
+History: s0665_07.pct W b0487.pct

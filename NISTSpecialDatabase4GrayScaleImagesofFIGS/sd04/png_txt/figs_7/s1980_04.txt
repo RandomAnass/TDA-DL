@@ -1,0 +1,3 @@
+Gender: M
+Class: W
+History: s1980_04.pct W b0274.pct

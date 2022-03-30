@@ -1,0 +1,3 @@
+Gender: M
+Class: T
+History: f1207_02.pct TR a2672.pct

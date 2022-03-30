@@ -1,0 +1,3 @@
+Gender: F
+Class: W
+History: s1713_07.pct W b0927.pct

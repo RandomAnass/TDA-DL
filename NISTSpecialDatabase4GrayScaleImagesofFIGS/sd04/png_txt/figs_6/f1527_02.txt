@@ -1,0 +1,3 @@
+Gender: M
+Class: W
+History: f1527_02.pct W a1242.pct

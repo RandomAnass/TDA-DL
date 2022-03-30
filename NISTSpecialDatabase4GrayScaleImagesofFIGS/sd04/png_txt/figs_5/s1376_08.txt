@@ -1,0 +1,3 @@
+Gender: M
+Class: W
+History: s1376_08.pct W b0968.pct

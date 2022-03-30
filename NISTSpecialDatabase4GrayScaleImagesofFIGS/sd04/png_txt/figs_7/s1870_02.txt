@@ -1,0 +1,3 @@
+Gender: M
+Class: T
+History: s1870_02.pct T b1912.pct

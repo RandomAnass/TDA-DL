@@ -1,0 +1,3 @@
+Gender: M
+Class: W
+History: s1900_04.pct W b0804.pct

@@ -1,0 +1,3 @@
+Gender: M
+Class: T
+History: s0246_02.pct TR b0372.pct
