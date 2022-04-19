@@ -1,7 +1,3 @@
-# TDA-DL
-Topological Data Analysis and Deep Learning
-
-![alt text](fingerprint.png)
 
 # **Topological data analysis & Deep Learning**
 Topological Data Analysis and Deep Learning: 
@@ -52,7 +48,9 @@ But the only paper that interested us was [Graph Representation of Fingerprint T
 
 
 ### Data preprocessing:
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.010.png)The pre-processing process of our data is described by the following flowchart:
+The pre-processing process of our data is described by the following flowchart:
+
+![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.010.png)
 
 1. Resizing the original image to 256\*256 pixels.
 1. Enhancing the contrast.
@@ -71,7 +69,11 @@ Here is an example. The original image:
 
 
 ## The problem and the topological descriptors:
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.012.png)With this dataset we have two classification problems: binary classification and five-class classification. Fingerprints are classified into one of five classes (L = left loop, W = swirl, R = right loop, T = tented bow, and A = arc) with an equal number of prints from each class (400). And two gender classes M: Male and F: Female. We started with binary classification but we found that the data is not balanced, so we use the SMOTE method to balance the data (only for binary classification). 
+
+
+With this dataset we have two classification problems: binary classification and five-class classification. Fingerprints are classified into one of five classes (L = left loop, W = swirl, R = right loop, T = tented bow, and A = arc) with an equal number of prints from each class (400). And two gender classes M: Male and F: Female. We started with binary classification but we found that the data is not balanced, so we use the SMOTE method to balance the data (only for binary classification). 
+
+![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.012.png)
 
 SMOTE (Synthetic Minority Oversampling Technique) is a technique to overcoming Class Imbalance, where the synthetic samples are generated for the minority class. And since we don’t want to give the model repeated data (for example the same image twice) we rotate each image with a random angle θ, where θ~N(0,3) . We get 6500 images as a result.
 
@@ -87,20 +89,14 @@ Here is an example of the final data, and topological features:
 ## Deep Learning and Topological Data analysis:
 To establish a benchmark, we use a classical convolutional neural network for both classification problems. We tried many structures (and different hyperparameters...).
 
-We tried a convergent CNN and a divergent CNN (by divergent and convergent we mean if the convolutional layers are getting bigger or smaller) [Conv2D(32, (2, 2)) -> Conv2D(64, (2, 2)) ->Conv2D(128, (2, 2)): divergent] and [Conv2D(128, (2, 2)) -> Conv2D(64, (2, 2)) ->Conv2D(32, (2, 2))): convergent] . The divergent method gave slightly better results (although the validation accuracy was very close), probably because most of the useful features of an image are usually local and not global. For the final model we use as a reference, the best activation function is "relu" or "LeakyRelu", and adding additional layers simply leads to faster overfitting without improving the validation accuracy. We also used early stopping to avoid overfitting. (the full graph can be found in the appendix 2).
 
 ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.021.png)
 
 
-
-
-Heuristic diagram of the CNN
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.022.png)
-
-
-### ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.023.png)The results:
+The results:
 We get a validation accuracy of 83.99%
 
+ ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.023.png)
 
 
 Now, let’s use topological data analysis. We used persistence images (as vectors of size 84) with Logistic regression and we get an accuracy of 80.5%.
@@ -114,31 +110,32 @@ Although the neural network performs better, it should be noted that we only use
 |The input|Persistence images (84,)|Preprocessed images (256,256)|
 |Validation accuracy|80.5%|83.99%|
 |Strengths and weaknesses|<p>- No overfitting</p><p>- Time and memory advantage</p><p>- Simple model</p>|<p>- Better accuracy and can be even better with a bigger dataset</p><p>- But it might lead to overfitting</p><p>- It takes a lot of time to train the model and optimize the hyperparameters</p>|
+
 Now let's continue with the binary classification but after applying the SMOTE.
 
 |The model|Logistic regression|CNN|
 | :- | :- | :- |
 |Validation accuracy|80.69%|88.31%|
 
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.024.png)Here the CNN is far better than logistic regression but we can still use persistence homology. For feature augmentation. 
+
+
+Here the CNN is far better than logistic regression but we can still use persistence homology. For feature augmentation. 
 
 The idea here is to create a model with a two-input structure as you can see in the graph below (the full graph can be found in the appendix 3). And this improves the accuracy of the validation and makes the validation loss smaller. Also, we will see that this result is true for both problems (2-class and 5-class classification).
 
+![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.024.png)
+
 The results:
 
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.025.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.026.png)
-
-
-
-
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.027.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.028.png)
 
 We compare then the results of the normal CNN and the CNN with persistence images as additional features. Here are the graphs of the loss and the accuracy. 
+![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.027.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.028.png)
 
 The model with topological features performs clearly better than the classical CNN model, as we can see in the box plots, both in terms of accuracy (87.6% vs 90.2%) and loss.
 
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.029.png)Now let’s see with the five-class problem, again the model will have a similar structure but instead of using the persistence images as flat vectors we also tried to use them as images with a convolutional layer.  
+For the five-class problem, the model has a similar structure but instead of using the persistence images as flat vectors we also tried to use them as images with a convolutional layer.  
 
+![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.029.png)
 
 |Label (in the boxplot)|Model|Highest validation accuracy|Heuristic diagram|
 | :-: | :-: | :-: | :-: |
@@ -148,21 +145,14 @@ The model with topological features performs clearly better than the classical C
 
 The difference isn’t as important here, but still there is a difference. Which means that topological features allow the network to extract information that could not be extracted without them.
 
-***Note:***
 
-*We also tried other methods like boosted trees (XGBoost), we also tried to [use diagrams directly with neural networks](https://stackoverflow.com/questions/71582391/keras-shapes-are-incompatible) but none of them gave an interesting result so we didn’t include them in the final results.*
-
-Third result:
+#### Third part: Perslay Layer
 
 The third part is by using PersLay model. For this we created a Rips diagram, and an Alpha diagram for each image. We tried to compare making rips and alpha diagrams by ***gudhi***, and rips diagrams by ***ripser***. Creating rips diagrams with ***gudhi*** takes a lot of time, so we used ***gudhi*** Alpha diagrams and ***ripser*** rips diagrams (in the end the diagrams will be arrays recognizable by the PersLay model).
 
 Creating these diagrams takes a lot of time (around 150 min), so we create them and store them to be used for future tests. For storage For storage, we tried three methods: ***pickle*** and ***np.load*** and ***h5py***, the first two give files of about 6 gigabytes, so it is not practical. The last one has a format problem. The best solution is ***hickle*** (combination of pickle, and h5py which avoids both format and memory problems, only 139 megabytes).
 
-There is a large number of parameters to choose from [optimizer, layer type, permutation-invariant operation, Weight function]. So, we do a quick and easy search on the parameters, and then select the possible candidates to work on. This is the comparison of the mean and the max of validation accuracy:
 
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.033.png)
-
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.034.png)
 
 By using only, the diagrams (with a Betti curve) we get a validation accuracy of 83.17% for the binary classification problem.
 
@@ -175,7 +165,6 @@ By using only, the diagrams (with a Betti curve) we get a validation accuracy of
 
 While it is not better than our best model so far, the Perslay is using only 849 trainable parameters, while the CNN+ Persistence images model was using more than 1 million trainable parameters. This shows the potential of the Perslay model.
 
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.036.png)Finally, if we add features (just flat images) we get 85.38 % as a best validation accuracy. And this was without hyperparameter optimization, it was only the first test so it can be improved in the future.
 
 
 
@@ -186,29 +175,3 @@ In conclusion, TDA tools can be used in many useful ways:
 - Direct use, as a vectorization method as we have seen with logistic regression and persistence images.
 - It can be used as a feature extraction or feature augmentation method.
 - And finally, the persistence layer which has a lot of potential and can be used to explore other topological descriptors.
-
-***Note:***
-
-While testing the different possible uses of the perslay layer, we have got an error, related to one of the possible layer parameters. The issue is submitted [here ](https://github.com/MathieuCarriere/perslay/issues/14).
-
-## Appendix 1: Github 
-The link to the github repository: <https://github.com/RandomAnass/TDA-DL>
-
-The project is reproducible, you will only need to install the required packages (for the part 1 we recommend using the Google Colab Notebook).
-## Appendix 2: Graph-model-1 
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.037.png)
-
-
-
-
-
-## Appendix 3: Graph-model-2
-
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.038.png)
-14
-
-14 avril 2022
-
-TDA & DL
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.039.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.040.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.041.png)
-
