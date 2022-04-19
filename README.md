@@ -52,7 +52,9 @@ But the only paper that interested us was [Graph Representation of Fingerprint T
 
 
 ### Data preprocessing:
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.010.png)The pre-processing process of our data is described by the following flowchart:
+The pre-processing process of our data is described by the following flowchart:
+
+![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.010.png)
 
 1. Resizing the original image to 256\*256 pixels.
 1. Enhancing the contrast.
