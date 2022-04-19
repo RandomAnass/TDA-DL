@@ -1,97 +1,11 @@
-﻿![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.001.png)
+# TDA-DL
+Topological Data Analysis and Deep Learning
 
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.002.png)
+![alt text](fingerprint.png)
 
-
-
-
-
-
-
-
-**Report of the TDA and Deep learning project**
-
-
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.003.png)
-
-
-
-
-
-**By :**
-
-Anass AL AMMIRI
-
-Wala Bouzouita
-
-Ruiqi Wang
-
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.004.png)
-
-**Supervised by :**
-
-Bertrand Michel
-
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.005.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**Applied Mathematics : Data science**
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.006.png)
-
-# **Table of Cordialement Contents** 
-[Table of Contents	2](#_Toc101248956)
-
-[Topological data analysis: The tools	3](#_Toc101248957)
-
-[PersLay Layer:	3](#_Toc101248958)
-
-[Application:	4](#_Toc101248959)
-
-[Data:	4](#_Toc101248960)
-
-[The data set:	4](#_Toc101248961)
-
-[Why this data set?	4](#_Toc101248962)
-
-[Data preprocessing:	4](#_Toc101248963)
-
-[The problem and the topological descriptors:	5](#_Toc101248964)
-
-[Deep Learning and Topological Data analysis:	7](#_Toc101248965)
-
-[The results:	7](#_Toc101248966)
-
-[Conclusion:	12](#_Toc101248967)
-
-[Appendix 1: Github	12](#_Toc101248968)
-
-[Appendix 2: Graph-model-1	13](#_Toc101248969)
-
-[Appendix 3: Graph-model-2	14](#_Toc101248970)
-
-
-**
-
-
-
-
-
-
-
-
-
+# **Topological data analysis & Deep Learning**
+Topological Data Analysis and Deep Learning: 
+In this project we first explored TDA tools (in the notebook TDA_DL_report_part1). Then we used those tools for classification problems.
 
 
 
@@ -106,16 +20,16 @@ In the first part of the project, we introduced some tools of persistence homolo
 
 
 
-In this figure we have q growing union of balls and the 1-skeleton of the corresponding Cech complex. Here, the complexes illustrate the births and deaths of three holes. The corresponding birth-death pairs are generally used to get persistence diagrams. Since is often Cech complex computationally expensive, we use other variants like Rips and Alpha complexes.
+In this figure we have a growing union of balls and the 1-skeleton of the corresponding Cech complex. Here, the complexes illustrate the births and deaths of three holes. The corresponding birth-death pairs are generally used to get persistence diagrams. Since is often Cech complex computationally expensive, we use other variants like Rips and Alpha complexes.
 
 It’s hard to work with the persistence diagrams directly. So, there are numerous topological descriptors that can be used instead and that preserves the information in the persistence diagrams.
 
-1. Persistence landscapes.
+3. Persistence landscapes.
 
 (You can go back to the [first part](https://github.com/RandomAnass/TDA-DL/blob/4286813d8b5f9e59227972db01c319150b0d1665/TDA_DL_report_part1.ipynb) of our project for more details about the previous three elements)
 
-1. [Persistence Images](https://doi.org/10.48550/arXiv.1507.06217) : a stable finite-dimensional vector representation of persistence diagrams (turning a diagram into a surface.
-1. Betti curves is a function mapping a persistence diagram to an integer-valued curve, i.e., each Betti curve is a function R→N. [For example](https://bastian.rieck.me/outreach/ECML_PKDD_2020_Lecture_3.pdf): 
+4. [Persistence Images](https://doi.org/10.48550/arXiv.1507.06217) : a stable finite-dimensional vector representation of persistence diagrams (turning a diagram into a surface.
+5. Betti curves is a function mapping a persistence diagram to an integer-valued curve, i.e., each Betti curve is a function R→N. [For example](https://bastian.rieck.me/outreach/ECML_PKDD_2020_Lecture_3.pdf): 
 
 ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.008.png)
 
@@ -132,9 +46,11 @@ The PersLay layer achieves this by transforming each point in the persistence di
 ### The data set:
 The dataset we use is the NIST 8-Bit Gray Scale Images of Fingerprint Image Groups (FIGS) from [academictorrents](https://academictorrents.com/details/d7e67e86f0f936773f217dbbb9c149c4d98748c6/tech). The NIST Special Database 4 contains 8-bit gray scale images of randomly selected fingerprints. The database was distributed for use in developing and testing automatic fingerprint classification systems on a common set of images. The original zip file contained 4000 fingerprints stored in PNG format (2000 pairs). Each fingerprint is 512 X 512 pixels with 32 rows of white space at the bottom of the fingerprint*.*
 ### Why this data set?
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.009.png) Our goal was to apply TDA methods on new datasets, without any article or tutorial dealing with this dataset. So, we searched a large number of datasets on [https://www.kaggle.com/datasets](https://www.kaggle.com/datasets%20) and <https://datasetsearch.research.google.com/> and randomly chose fingerprints *(well, not quite randomly)*. The motivation is that fingerprints are composed of connected lines, so we assumed that we might be able to get some structures or features that would be extracted by persistence diagrams. After preprocessing the data, we searched for papers that would have already worked on fingerprints and found that [SVM](http://eprints.utar.edu.my/3950/1/16ACB02809_FYP.pdf) is generally the most used method (with [different similarity distances](https://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=8954340&fileOId=8954341)), along with [CNN used for gender classification](https://medium.com/swlh/fingerprint-gender-classification-cnn-8b052a162a93) and other more [algorithmic methods](https://www.sciencedirect.com/science/article/abs/pii/0031320395001069) that detect loops and singularity points.
+ Our goal was to apply TDA methods on new datasets, without any article or tutorial dealing with this dataset. So, we searched a large number of datasets on [https://www.kaggle.com/datasets](https://www.kaggle.com/datasets%20) and <https://datasetsearch.research.google.com/> and randomly chose fingerprints *(well, not quite randomly)*. The motivation is that fingerprints are composed of connected lines, so we assumed that we might be able to get some structures or features that would be extracted by persistence diagrams. After preprocessing the data, we searched for papers that would have already worked on fingerprints and found that [SVM](http://eprints.utar.edu.my/3950/1/16ACB02809_FYP.pdf) is generally the most used method (with [different similarity distances](https://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=8954340&fileOId=8954341)), along with [CNN used for gender classification](https://medium.com/swlh/fingerprint-gender-classification-cnn-8b052a162a93) and other more [algorithmic methods](https://www.sciencedirect.com/science/article/abs/pii/0031320395001069) that detect loops and singularity points.
 
 But the only paper that interested us was [Graph Representation of Fingerprint Topology](https://www.semanticscholar.org/paper/Graph-Representation-of-Fingerprint-Topology-%E2%88%97-%C3%96lz-Kropatsch/bb8ed547cc7d3c84111e63365b167672dda715da), the one that shows that a graphical representation is possible for fingerprints, which reassured us to continue.
+
+
 ### Data preprocessing:
 ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.010.png)The pre-processing process of our data is described by the following flowchart:
 
@@ -146,44 +62,12 @@ But the only paper that interested us was [Graph Representation of Fingerprint T
 
 Why did we process the images this way? It’s because if we took a look at the original images, we can see that the array is too noisy, all the cells have values in the same range. And we don’t have a clear distinction between the lines, the cells with zeros and the cells with ones. And remember that to get the complexes from the images we want them to look like cloud points, each image has distinguished points and lines. Because that’s what would (ideally) enable us to extract topological features.
 
-
-|…|…|…|…|…|
-| :- | :- | :- | :- | :- |
-|0.76862746|0.7607843  |…|0.7647059  |0.77254903|
-|0.76862746|0.7607843  |..|0.76862746|0.7607843  |
-|0.7921569|0.7529412  |…|0.7490196  |0.7529412|
-|…|…|…|…|…|
+Here is an example. The original image:
 
 
+![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.011.png)
 
 
-
-
-|0.|0.|0.|0.|0.|0.|0.|…|0.|0.|0.|0.|0.|0.|0.|
-| :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- |
-|…|…|…|…|…|…|…|…|…|…|…|…|…|…|…|
-|0.|0.40|1.|1.|1.|0.05|0.|…|0.67|0.99|1.|1.|0.40|0.|0.|
-|…|…|…|…|…|…|…|…|…|…|…|…|…|…|…|
-|0.|0.|0.|0.|0.|0.|0.|…|0.|0.|0.|0.|0.|0.|0.|
-
-
-
-![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.011.png)Here is an example. The original image:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##
 
 
 ## The problem and the topological descriptors:
@@ -327,3 +211,4 @@ The project is reproducible, you will only need to install the required packages
 
 TDA & DL
 ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.039.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.040.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.041.png)
+
