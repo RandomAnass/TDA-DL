@@ -1,8 +1,3 @@
-# TDA-DL
-Topological Data Analysis and Deep Learning
-
-![alt text](fingerprint.png)
-
 # **Topological data analysis & Deep Learning**
 Topological Data Analysis and Deep Learning: 
 In this project we first explored TDA tools (in the notebook TDA_DL_report_part1). Then we used those tools for classification problems.
