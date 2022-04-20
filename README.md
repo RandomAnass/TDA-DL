@@ -11,7 +11,7 @@ In the first part of the project, we introduced some tools of persistence homolo
 1. Rips complex and from it Rips diagrams.
 1. Alpha complex and alpha diagrams.
 
-![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.007.png)
+![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.007.png)
 
 
 
