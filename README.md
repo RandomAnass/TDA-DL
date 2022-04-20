@@ -26,7 +26,7 @@ It’s hard to work with the persistence diagrams directly. So, there are numero
 4. [Persistence Images](https://doi.org/10.48550/arXiv.1507.06217) : a stable finite-dimensional vector representation of persistence diagrams (turning a diagram into a surface.
 5. Betti curves is a function mapping a persistence diagram to an integer-valued curve, i.e., each Betti curve is a function R→N. [For example](https://bastian.rieck.me/outreach/ECML_PKDD_2020_Lecture_3.pdf): 
 
-![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.008.png)
+![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.008.png)
 
 
 
@@ -49,7 +49,7 @@ But the only paper that interested us was [Graph Representation of Fingerprint T
 ### Data preprocessing:
 The pre-processing process of our data is described by the following flowchart:
 
-![](readme_images\data_preprocessing.png)
+![](readme_images/data_preprocessing.PNG)
 
 1. Resizing the original image to 256\*256 pixels.
 1. Enhancing the contrast.
@@ -62,7 +62,7 @@ Why did we process the images this way? It’s because if we took a look at the 
 Here is an example. The original image:
 
 
-![](readme_images\fingerprints_array.PNG)
+![](readme_images/fingerprints_array.PNG)
 
 
 
@@ -72,7 +72,7 @@ Here is an example. The original image:
 
 With this dataset we have two classification problems: binary classification and five-class classification. Fingerprints are classified into one of five classes (L = left loop, W = swirl, R = right loop, T = tented bow, and A = arc) with an equal number of prints from each class (400). And two gender classes M: Male and F: Female. We started with binary classification but we found that the data is not balanced, so we use the SMOTE method to balance the data (only for binary classification). 
 
-![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.012.png)
+![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.012.png)
 
 SMOTE (Synthetic Minority Oversampling Technique) is a technique to overcoming Class Imbalance, where the synthetic samples are generated for the minority class. And since we don’t want to give the model repeated data (for example the same image twice) we rotate each image with a random angle θ, where θ~N(0,3) . We get 6500 images as a result.
 
@@ -80,22 +80,22 @@ The topological features we can extract from the images, thanks to persistence h
 
 Here is an example of the final data, and topological features:
 
-|**Final images with their labels for binary classification![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.013.png)**|**Final images with their labels 5-classes ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.014.png)**|
+|**Final images with their labels for binary classification![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.013.png)**|**Final images with their labels 5-classes ![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.014.png)**|
 | :-: | :-: |
-|![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.015.png) **Persistence diagrams of Rips complexes**|![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.016.png)**Persistence images**|
-|<p>![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.017.png)</p><p> **Persistence diagrams of Alpha complexes ![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.018.png)**</p>|<p>![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.019.png)</p><p></p><p>![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.020.png) **Persistence barcodes**</p>|
+| **Persistence diagrams of Rips complexes** ![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.015.png)| **Persistence images** ![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.016.png) |
+|<p>![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.017.png)</p><p> **Persistence diagrams of Alpha complexes ![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.018.png)**</p>|<p>![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.019.png)</p><p></p><p>  **Persistence barcodes** ![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.020.png) </p>|
 
 ## Deep Learning and Topological Data analysis:
 To establish a benchmark, we use a classical convolutional neural network for both classification problems. We tried many structures (and different hyperparameters...).
 
 
-![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.021.png)
+![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.021.png)
 
 
 The results:
 We get a validation accuracy of 83.99%
 
- ![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.023.png)
+ ![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.023.png)
 
 
 Now, let’s use topological data analysis. We used persistence images (as vectors of size 84) with Logistic regression and we get an accuracy of 80.5%.
@@ -122,26 +122,26 @@ Here the CNN is far better than logistic regression but we can still use persist
 
 The idea here is to create a model with a two-input structure as you can see in the graph below (the full graph can be found in the appendix 3). And this improves the accuracy of the validation and makes the validation loss smaller. Also, we will see that this result is true for both problems (2-class and 5-class classification).
 
-![](readme_images\heuristic_diagram.png)
+![](readme_images/heuristic_diagram.png)
 
 The results:
 
 
 We compare then the results of the normal CNN and the CNN with persistence images as additional features. Here are the graphs of the loss and the accuracy. 
 
-![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.027.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.028.png)
+![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.027.png)![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.028.png)
 
 The model with topological features performs clearly better than the classical CNN model, as we can see in the box plots, both in terms of accuracy (87.6% vs 90.2%) and loss.
 
 For the five-class problem, the model has a similar structure but instead of using the persistence images as flat vectors we also tried to use them as images with a convolutional layer.  
 
-![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.029.png)
+![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.029.png)
 
 |Label (in the boxplot)|Model|Highest validation accuracy|Heuristic diagram|
 | :-: | :-: | :-: | :-: |
-|0|**Classic CNN**|**74.77**|![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.030.png)|
-|1|**CNN+PI with a dense layer**|**76.20**|![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.031.png)|
-|2|**CNN+PI with a convolutional layer**|**75.65**|![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.032.png)|
+|0|**Classic CNN**|**74.77**|![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.030.png)|
+|1|**CNN+PI with a dense layer**|**76.20**|![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.031.png)|
+|2|**CNN+PI with a convolutional layer**|**75.65**|![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.032.png)|
 
 The difference isn’t as important here, but still there is a difference. Which means that topological features allow the network to extract information that could not be extracted without them.
 
@@ -156,7 +156,7 @@ Creating these diagrams takes a lot of time (around 150 min), so we create them 
 
 By using only, the diagrams (with a Betti curve) we get a validation accuracy of 83.17% for the binary classification problem.
 
-![](readme_images\Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.035.png)
+![](readme_images/Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.035.png)
 
 
 
