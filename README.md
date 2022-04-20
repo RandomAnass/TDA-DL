@@ -82,7 +82,7 @@ Here is an example of the final data, and topological features:
 
 |**Final images with their labels for binary classification![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.013.png)**|**Final images with their labels 5-classes ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.014.png)**|
 | :-: | :-: |
-|![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.015.png)**Persistence diagrams of Rips complexes**|![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.016.png)**Persistence images**|
+|![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.015.png) **Persistence diagrams of Rips complexes**|![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.016.png)**Persistence images**|
 |<p>![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.017.png)</p><p>**Persistence diagrams of Alpha complexes ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.018.png)**</p>|<p>![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.019.png)</p><p></p><p>![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.020.png)**Persistence barcodes**</p>|
 
 ## Deep Learning and Topological Data analysis:
@@ -128,6 +128,7 @@ The results:
 
 
 We compare then the results of the normal CNN and the CNN with persistence images as additional features. Here are the graphs of the loss and the accuracy. 
+
 ![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.027.png)![](Aspose.Words.af1164a1-b0f2-48f9-a0c7-236bf9eb69d4.028.png)
 
 The model with topological features performs clearly better than the classical CNN model, as we can see in the box plots, both in terms of accuracy (87.6% vs 90.2%) and loss.
