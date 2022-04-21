@@ -1,0 +1,13 @@
+tensorflow==2.8.0
+seaborn==0.11.2
+scikit-learn==1.0.2
+ripser==0.6.1
+progressbar==2.5
+perslay==2.0
+persim==0.3.1
+pandas==1.4.1
+numpy==1.22.2
+matplotlib==3.5.1
+keras==2.8.0
+hickle==4.0.4
+gudhi==3.5.0
